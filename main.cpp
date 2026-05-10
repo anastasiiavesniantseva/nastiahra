@@ -39,3 +39,52 @@ int main()
     {
         cout << "Prichazis do vesnice." << endl;
     }
+    else if (volba == 2)
+    {
+        cout << "Vstupujes do lesa..." << endl;
+        cout << "Objevil se monstrum!" << endl;
+
+        int monstrumHp = 6;
+
+        while (monstrumHp > 0 && zivoty > 0)
+        {
+            cout << endl;
+            cout << "Tvoje zivoty: " << zivoty << endl;
+            cout << "Zivoty monstra: " << monstrumHp << endl;
+
+            cout << "1 - Utok" << endl;
+            cout << "2 - Utect" << endl;
+            cout << "Tvoje volba: ";
+            cin >> volba;
+
+            if (volba == 1)
+            {
+                cout << "Utoceis na monstrum!" << endl;
+                monstrumHp -= utok;
+
+                if (monstrumHp > 0)
+                {
+                    cout << "Monstrum utoci zpatky!" << endl;
+                    zivoty -= 2;
+                }
+            }
+            else if (volba == 2)
+            {
+                cout << "Utekl jsi z boje!" << endl;
+                break;
+            }
+        }
+
+        if (zivoty > 0 && monstrumHp <= 0)
+        {
+            cout << "Porazil jsi monstruma!" << endl;
+            zlato += 10;
+            cout << "Ziskal jsi 10 zlata." << endl;
+        }
+    }
+    else if (volba == 3)
+    {
+        cout << "Zivoty: " << zivoty << endl;
+        cout << "Zlato: " << zlato << endl;
+        cout << "Utok: " << utok << endl;
+    }
