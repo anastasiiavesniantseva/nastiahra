@@ -9,7 +9,7 @@ int main()
     int zlato = 20;
     int utok = 3;
     int volba;
-
+    int mana = 10;
     cout << "=== MANAEATER ===" << endl;
     cout << "Vitej v textove hre!" << endl;
     cout << "Zadej jmeno hrace: ";
@@ -154,3 +154,98 @@ int main()
                 cout << "Pavouci utoci!" << endl;
             }
         }
+        zlato += 40;
+
+        cout << "Mas uz hodne zlata." << endl;
+
+        // HLAVNI BOSS
+
+        cout << endl;
+        cout << "Objevil se MANAEATER!" << endl;
+
+        int bossHp = 25;
+        int absorbovanaMana = 0;
+        int kolo = 0;
+
+        while (bossHp > 0 && zivoty > 0)
+        {
+
+            kolo++;
+
+            cout << endl;
+            cout << "Boss HP: " << bossHp << endl;
+            cout << "Tvoje HP: " << zivoty << endl;
+
+            cout << "1 - Normalni utok" << endl;
+            cout << "2 - Magicky utok" << endl;
+            cin >> volba;
+
+            if (volba == 1)
+            {
+
+                bossHp -= utok;
+
+                cout << "Zasahl jsi bosse." << endl;
+            }
+
+            else if (volba == 2)
+            {
+
+                if (mana >= 2)
+                {
+
+                    mana -= 2;
+
+                    bossHp -= 4;
+
+                    absorbovanaMana++;
+
+                    bossHp += 2;
+
+                    cout << "Manaeater absorboval magii!" << endl;
+                }
+
+                else
+                {
+
+                    cout << "Nemas dost many." << endl;
+                }
+            }
+
+            if (kolo % 3 == 0)
+            {
+
+                int specialniDamage = absorbovanaMana * 2;
+
+                cout << "Manaeater pouziva specialni utok!" << endl;
+
+                zivoty -= specialniDamage;
+            }
+
+            else
+            {
+
+                zivoty -= 4;
+
+                cout << "Boss utoci!" << endl;
+            }
+        }
+
+        if (bossHp <= 0)
+        {
+
+            cout << endl;
+            cout << "PORAZIL JSI MANAEATERA!" << endl;
+            cout << "VYHRAL JSI HRU!" << endl;
+        }
+
+        else if (zivoty <= 0)
+        {
+
+            cout << endl;
+            cout << "Prohral jsi." << endl;
+        }
+    }
+
+    return 0;
+}
